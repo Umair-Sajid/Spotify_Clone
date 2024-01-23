@@ -1,0 +1,11 @@
+import passport from "passport";
+import songController from "../../controller/song/index.js";
+import { Router } from "express";
+import authenticateMiddleware from "../../middleware/authenticate.js";
+const songRouter=Router();
+songRouter.post('/create',authenticateMiddleware, songController.create);
+songRouter.get('/get/mysongs',authenticateMiddleware, songController.read);
+songRouter.post('/get/artist',authenticateMiddleware, songController.artist);
+songRouter.post('/get/songbyname',authenticateMiddleware, songController.songName);
+// songRouter.get('/get/mysongs', songController.read);
+export default songRouter;
